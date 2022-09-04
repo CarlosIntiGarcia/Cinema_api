@@ -1,4 +1,4 @@
-from .models import Cine, Sala, Ciudad, Genero, Producto, Pelicula, Tienda
+from .models import Cine, Sala, Ciudad, Genero, Producto, Pelicula, Tienda, Empleado
 from rest_framework import serializers
 
 class CiudadSerializer(serializers.ModelSerializer):
@@ -56,7 +56,7 @@ class CineSerializer(serializers.ModelSerializer):
 
 class SalaSerializer(serializers.ModelSerializer):
   class Meta:
-    model = Sala,
+    model = Sala
     fields = ('id',
               'nombre',
               'cine',
@@ -64,3 +64,14 @@ class SalaSerializer(serializers.ModelSerializer):
               'pelicula',
               'hora_funcion')
     depth = 1
+
+class EmpleadoSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Empleado
+    fields = ('id',
+              'apellidos',
+              'direccion',
+              'telefono',
+              'fecha_nacimiento',
+              'usuario',
+              'contraseña')
