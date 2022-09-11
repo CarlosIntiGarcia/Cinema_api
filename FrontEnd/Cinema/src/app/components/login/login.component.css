@@ -1,0 +1,46 @@
+.body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+
+.login {
+  /*display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;*/
+  background-color: #2c2e27;
+  width: 50%;
+  text-align: center;
+}
+
+.img-user {
+  height: 30%;
+  max-height: 200px;
+}
+
+.password-label,
+.user-label {
+  width: 80%;
+}
+
+.login-btn {
+  width: 80%;
+  height: 15%;
+  margin-bottom: 1rem;
+}
+
+.spinner-login {
+  margin: 0 auto;
+}
+/*# sourceMappingURL=login.component.css.map */

@@ -1,0 +1,7 @@
+<button mat-button [matMenuTriggerFor]="menuu" class="menu-res">Menu</button>
+<mat-menu #menuu="matMenu" class="menu-items-res">
+  <button mat-button class="menu-items-btn" *ngFor="let item of menu" [routerLink]="item.redirect">{{ item.name }}</button>
+</mat-menu>
+
+
+

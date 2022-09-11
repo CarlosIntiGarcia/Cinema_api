@@ -1,0 +1,71 @@
+<body class="body">
+    <section class="login">
+        <mat-spinner *ngIf="loading" diameter='50' color="accent" class="spinner-login"></mat-spinner>
+
+
+        <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="ingresar()">
+            <img src="../../../assets/img/mantenimiento.png" class="img-user" alt="">
+            <h1>Manteniniento</h1>
+
+            <mat-form-field class="user-label" appearance="fill" color="accent">
+                <mat-label>Factura</mat-label>
+                <mat-select formControlName="idFactura">
+                    <mat-option *ngFor="let factura of facturas" [value]="factura.id">
+                        {{factura.id}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="user-label" appearance="fill" color="accent">
+                <mat-label>Mecanico</mat-label>
+                <mat-select formControlName="idMecanico">
+                    <mat-option *ngFor="let mecanico of mecanicos" [value]="mecanico.id">
+                        {{mecanico.primerNombre}}{{mecanico.primerApellido}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="user-label" appearance="fill" color="accent">
+                <mat-label>idEstadoMantenimiento</mat-label>
+                <mat-select formControlName="idEstadoMantenimiento">
+                    <mat-option *ngFor="let estadoMantenimiento of estadoMantenimientos" [value]="estadoMantenimiento.id">
+                        {{estadoMantenimiento.descripcion}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="user-label" appearance="fill" color="accent">
+                <mat-label>idVehiculo</mat-label>
+                <mat-select formControlName="idVehiculo">
+                    <mat-option *ngFor="let vehiculo of vehiculos" [value]="vehiculo.id">
+                        {{vehiculo.marca}} {{vehiculo.placas}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="user-label" appearance="fill" color="accent">
+                <mat-label>idManoDeObra</mat-label>
+                <mat-select formControlName="idManoDeObra">
+                    <mat-option *ngFor="let manoDeObra of manoDeObras" [value]="manoDeObra.id">
+                        {{manoDeObra.descripcion}} {{manoDeObra.servicio}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+            <mat-form-field class="user-label" appearance="fill" color="accent">
+                <mat-label>descripcion</mat-label>
+                <input type="text" matInput autocomplete="off" formControlName="descripcion">
+            </mat-form-field>
+
+            <mat-form-field class="user-label" appearance="fill" color="accent">
+                <mat-label>fecha</mat-label>
+                <input type="date" matInput autocomplete="off" formControlName="fecha">
+            </mat-form-field>
+
+
+            <br>
+            <button type="submit" class="login-btn" mat-raised-button color="accent" [disabled]="form.invalid">Mantenimiento</button>
+        </form>
+    </section>
+</body>

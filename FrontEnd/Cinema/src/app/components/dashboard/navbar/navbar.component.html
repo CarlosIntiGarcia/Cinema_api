@@ -1,0 +1,14 @@
+<mat-toolbar color="accent">
+  <span>Cinema</span>
+  <span class="example-spacer"></span>
+  <section class="btn-navbar">
+    <button mat-button *ngFor="let item of menu" [routerLink]="item.redirect">{{ item.name }}</button>
+  </section>
+  <span class="example-spacer"></span>
+  <button mat-icon-button routerLink="/logout" class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon">
+    <mat-icon>logout</mat-icon>
+  </button>
+  <app-menu-responsive></app-menu-responsive>
+
+</mat-toolbar>

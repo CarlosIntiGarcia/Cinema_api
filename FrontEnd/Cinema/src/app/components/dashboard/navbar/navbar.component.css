@@ -1,0 +1,27 @@
+.example-spacer {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.example-spacer {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #cc5e49;
+  color: white;
+}
+
+@media (max-width: 615px) {
+  .btn-navbar {
+    display: none;
+  }
+  section.logo img {
+    width: 50%;
+  }
+}
+/*# sourceMappingURL=navbar.component.css.map */

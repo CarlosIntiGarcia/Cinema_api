@@ -1,0 +1,43 @@
+<body class="body">
+    <section class="login">
+        <mat-spinner *ngIf="loading" diameter='50' color="accent" class="spinner-login"></mat-spinner>
+
+
+        <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="ingresar()">
+            <img src="../../../assets/img/diagnostico.png" class="img-user" alt="">
+            <h1>Vehículo</h1>
+
+            <mat-form-field class="user-label-file" appearance="fill" color="accent">
+                <mat-label>Imagen</mat-label>
+                <ngx-mat-file-input matInput autocomplete="off" formControlName="file">
+                </ngx-mat-file-input>
+                <!-- <input type="file" matInput autocomplete="off" formControlName="file"> -->
+            </mat-form-field>
+            <button class="upload-btn" type="button" mat-raised-button color="accent" (click)="$event.stopPropagation()" (click)="fileUpload()">Subir</button>
+
+            <mat-form-field class="user-label" appearance="fill" color="accent">
+                <mat-label>Persona</mat-label>
+                <mat-select formControlName="idPersona">
+                    <mat-option *ngFor="let persona of personas" [value]="persona.id">
+                        {{persona.correoElectronico}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+            <mat-form-field class="user-label" appearance="fill" color="accent">
+                <mat-label>Placas</mat-label>
+                <input type="text" matInput autocomplete="off" formControlName="placas">
+            </mat-form-field>
+
+            <mat-form-field class="user-label" appearance="fill" color="accent">
+                <mat-label>Marca</mat-label>
+                <input type="text" matInput autocomplete="off" formControlName="marca">
+            </mat-form-field>
+
+            <br>
+            <button type="submit" class="login-btn" mat-raised-button color="accent"
+                [disabled]="form.invalid">Mantenimiento</button>
+        </form>
+    </section>
+</body>

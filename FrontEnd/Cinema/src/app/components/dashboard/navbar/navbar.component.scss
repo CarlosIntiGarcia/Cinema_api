@@ -1,0 +1,28 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #cc5e49;
+  color: white;
+}
+
+.btn-navbar {
+  //width: 50%;
+}
+
+@media (max-width: 615px) {
+  .btn-navbar{
+    display: none;
+  }
+  section.logo img{
+    //display: none;
+    width: 50%;
+  }
+  
+}
