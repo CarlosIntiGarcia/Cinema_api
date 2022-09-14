@@ -42,10 +42,5 @@ class Sala(models.Model):
   hora_funcion = models.DateField(blank=False, null=False)
 
 class Empleado(models.Model):
-  nombre = models.CharField(max_length=50, blank=False, null=False)
-  apellidos = models.CharField(max_length=50, blank=False, null=False)
-  direccion = models.CharField(max_length=50, blank=False, null=False)
-  telefono = models.BigIntegerField(blank=False, null=False)
-  fecha_nacimiento = models.DateField(blank=False, null=False)
-  usuario = models.CharField(max_length=50, blank=False, null=False)
-  contraseña = models.CharField(blank=False, null=False)
+  email = models.CharField(max_length=50, blank=False, null=False)
+  contraseña = models.CharField(max_length=50, blank=False, null=False)

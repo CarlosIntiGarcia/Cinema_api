@@ -24,9 +24,8 @@ class ProductoSerializer(serializers.ModelSerializer):
 class TiendaSerializer(serializers.ModelSerializer):
   class Meta:
     model = Tienda
-    fields = ('id'
+    fields = ('id',
               'producto')
-    depth = 1
 
 class PeliculaSerializer(serializers.ModelSerializer):
   class Meta:
@@ -39,12 +38,11 @@ class PeliculaSerializer(serializers.ModelSerializer):
               'descripcion',
               'fecha_estreno',
               'clasificacion')
-    depth = 1
 
 class CineSerializer(serializers.ModelSerializer):
   class Meta:
     model = Cine
-    fields = ('id'
+    fields = ('id',
               'nombre',
               'ciudad',
               'direccion',
@@ -52,7 +50,6 @@ class CineSerializer(serializers.ModelSerializer):
               'hora_apertura',
               'hora_cierre',
               'tienda')
-    depth = 1
 
 class SalaSerializer(serializers.ModelSerializer):
   class Meta:
@@ -63,15 +60,10 @@ class SalaSerializer(serializers.ModelSerializer):
               'capacidad',
               'pelicula',
               'hora_funcion')
-    depth = 1
 
 class EmpleadoSerializer(serializers.ModelSerializer):
   class Meta:
     model = Empleado
     fields = ('id',
-              'apellidos',
-              'direccion',
-              'telefono',
-              'fecha_nacimiento',
-              'usuario',
+              'email',
               'contraseña')
