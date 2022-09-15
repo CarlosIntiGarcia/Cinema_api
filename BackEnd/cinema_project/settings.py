@@ -24,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-7x9g+nxbh&9@2*9r=kve#_aehxmtxqqq(ifs5-r-1q(-jj*q8b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -87,11 +87,11 @@ WSGI_APPLICATION = 'cinema_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('NAME_DB'),
-        'USER': os.environ.get('USER_DB'),
-        'PASSWORD': os.environ.get('PASSWORD_DB'),
-        'HOST': os.environ.get('HOST_DB'),
-        'PORT': os.environ.get('PORT_DB')
+        'NAME': 'cinema',
+        'USER': 'admin',
+        'PASSWORD': 'johansSwq21321*',
+        'HOST': 'cinemadb.cbw6kgjrpznb.us-east-1.rds.amazonaws.com',
+        'PORT': '3306'
     }
 }
 
@@ -134,13 +134,6 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    ("js", os.path.join(STATIC_ROOT, 'js')),
-    ("css", os.path.join(STATIC_ROOT, 'css')),
-    ("images", os.path.join(STATIC_ROOT, 'images')),
-    ("fonts", os.path.join(STATIC_ROOT, 'fonts')),
-)
-
 django_heroku.settings(locals())
 
 # Default primary key field type
