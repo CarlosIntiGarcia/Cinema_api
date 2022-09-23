@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework import routers
 from rest_framework.urlpatterns import format_suffix_patterns
-from .views import api_root, CineList, CineDetail, CiudadList, CiudadDetail, GeneroList, GeneroDetail, PeliculaList, PeliculaDetail, ProductoList, ProductoDetail, SalaList, SalaDetail, TiendaList, TiendaDetail, EmpleadoList, EmpleadoDetail
+from .views import api_root, CineList, CineDetail, CiudadList, CiudadDetail, GeneroList, GeneroDetail, PeliculaList, PeliculaDetail, ProductoList, ProductoDetail, SalaList, SalaDetail, TiendaList, TiendaDetail, EmpleadoList, EmpleadoDetail, FuncionList, FuncionDetail
 
 urlpatterns=[
   path('', api_root),
@@ -19,6 +19,8 @@ urlpatterns=[
   path('cines/<int:pk>/', CineDetail.as_view(), name='cine-detail'),
   path('salas/', SalaList.as_view(), name='sala-list'),
   path('salas/<int:pk>/', SalaDetail.as_view(), name='sala-detail'),
+  path('funciones/', FuncionList.as_view(), name='funcion-list'),
+  path('fuciones/<int:pk>/', FuncionDetail.as_view(), name='funcion-detail'),
   path('empleados/', EmpleadoList.as_view(), name='empleado-list'),
   path('empleados/<int:pk>/', EmpleadoDetail.as_view(), name='empleado-detail'),
 ]

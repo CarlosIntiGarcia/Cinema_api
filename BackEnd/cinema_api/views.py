@@ -4,8 +4,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
-from .models import Ciudad, Cine, Genero, Pelicula, Producto, Sala, Tienda, Empleado
-from .serializers import CineSerializer, CiudadSerializer, GeneroSerializer, PeliculaSerializer, ProductoSerializer, SalaSerializer, TiendaSerializer, EmpleadoSerializer
+from .models import Ciudad, Cine, Genero, Pelicula, Producto, Sala, Tienda, Empleado, Funcion
+from .serializers import CineSerializer, CiudadSerializer, GeneroSerializer, PeliculaSerializer, ProductoSerializer, SalaSerializer, TiendaSerializer, EmpleadoSerializer, FuncionSerializer
  
 # Create your views here.
 
@@ -19,7 +19,8 @@ def api_root(request, format=None):
     'peliculas': reverse('pelicula-list', request=request, format=format),
     'cines': reverse('cine-list', request=request, format=format),
     'salas': reverse('sala-list', request=request, format=format),
-    'empleados': reverse('empleado-list', request=request, format=format),
+    'funciones': reverse('funcion-list', request=request, format=format),
+    'empleados': reverse('empleado-list', request=request, format=format)
   })
 
 #Controladores de Ciudad
@@ -190,7 +191,31 @@ class SalaDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.Dest
   def delete(self, request, *args, **kwargs):
     return self.destroy(request, *args, **kwargs)
 
-#Controlador de Sala
+#Controlador de Funcion
+class FuncionList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+  queryset = Funcion.objects.all()
+  serializer_class = FuncionSerializer
+
+  def get(self, request, *args, **kwargs):
+    return self.list(request, *args, **kwargs)
+
+  def post(self, request, *args, **kwargs):
+    return self.create(request, *args, **kwargs)
+
+class FuncionDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
+  queryset = Funcion.objects.all()
+  serializer_class = FuncionSerializer
+
+  def get(self, request, *args, **kwargs):
+    return self.retrieve(request, *args, **kwargs)
+
+  def put(self, request, *args, **kwargs):
+    return self.update(request, *args, **kwargs)
+
+  def delete(self, request, *args, **kwargs):
+    return self.destroy(request, *args, **kwargs)
+
+#Controlador de Empleado
 class EmpleadoList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
   queryset = Empleado.objects.all()
   serializer_class = EmpleadoSerializer
@@ -200,6 +225,7 @@ class EmpleadoList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Gene
 
   def post(self, request, *args, **kwargs):
     return self.create(request, *args, **kwargs)
+    
 
 class EmpleadoDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
   queryset = Empleado.objects.all()
