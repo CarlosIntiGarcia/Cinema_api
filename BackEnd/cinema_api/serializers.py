@@ -1,4 +1,4 @@
-from .models import Cine, Sala, Ciudad, Genero, Producto, Pelicula, Tienda, Empleado, Funcion
+from .models import Cine, Sala, Ciudad, Genero, Producto, Pelicula, Tienda, Usuario, Funcion
 from rest_framework import serializers
 
 class CiudadSerializer(serializers.ModelSerializer):
@@ -22,31 +22,43 @@ class ProductoSerializer(serializers.ModelSerializer):
               'precio')
 
 class TiendaSerializer(serializers.ModelSerializer):
-  producto_pk = serializers.PrimaryKeyRelatedField(queryset=Producto.objects.all(), source='producto', write_only=True)
+  productos = ProductoSerializer(many=True)
   
   class Meta:
     model = Tienda
     fields = ('id',
-              'producto',
-              'producto_pk')
+              'productos')
+              # 'productos_pk')
     depth = 1
 
+  def create(self, validated_data):
+    producto_data = validated_data.pop('productos')
+    tienda = Tienda.objects.create(**validated_data)
+        
+    for producto in producto_data:
+      tienda.productos.create(**producto)
+    return tienda
+
 class PeliculaSerializer(serializers.ModelSerializer):
-  genero_pk = serializers.PrimaryKeyRelatedField(queryset=Genero.objects.all(), source='genero', write_only=True)
+  generos = GeneroSerializer(many=True)
   
   class Meta:
     model = Pelicula
     fields = ('id',
               'titulo',
-              'genero',
-              'genero_pk',
+              'generos',
               'portada',
-              # 'año',
               'duracion',
               'descripcion',
-              # 'fecha_estreno',
               'clasificacion')
-    depth = 1
+  
+  def create(self, validated_data):
+    genero_data = validated_data.pop('generos')
+    pelicula = Pelicula.objects.create(**validated_data)
+
+    for genero in genero_data:
+      Genero.objects.create(**genero, pelicula=pelicula)
+    return pelicula
 
 class CineSerializer(serializers.ModelSerializer):
   ciudad_pk = serializers.PrimaryKeyRelatedField(queryset=Ciudad.objects.all(), source='ciudad', write_only=True)
@@ -92,9 +104,9 @@ class FuncionSerializer(serializers.ModelSerializer):
               'pelicula_pk')
     depth = 1
 
-class EmpleadoSerializer(serializers.ModelSerializer):
+class UsuarioSerializer(serializers.ModelSerializer):
   class Meta:
-    model = Empleado
+    model = Usuario
     fields = ('id',
               'email',
               'contraseña',
